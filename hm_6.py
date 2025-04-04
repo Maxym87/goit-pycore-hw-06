@@ -29,3 +29,14 @@ class Record:
                     phone.value = new_phone
                     return
             raise ValueError("Телефон не знайдений")
+        
+        def find_phone(self, phone:str):
+            for p in self.phones:
+                if p.value == phone:
+                    return p.value
+            
+            return None
+        
+        def __str__(self):
+            return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"
+
