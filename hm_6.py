@@ -10,7 +10,13 @@ class Name(Field):
     pass
 
 class Phone(Field):
-    pass
+    def __init__(self, value):
+         if not self.is_valid_phone(value):
+              raise ValueError("Номер телефону має бути 10 цифр.")
+         super().__init__(value)
+
+    def is_valid_phone(self, phone: str) -> bool:
+        return len(phone) == 10 and phone.isdigit()
 
 class Record:
     def __init__(self, name):
